@@ -1,0 +1,65 @@
+package entidades03;
+
+public class PodioV1 {
+
+	private static final int CANT_POSICIONES = 3;
+	private int[] posiciones;
+
+	public PodioV1() {
+		posiciones = new int[CANT_POSICIONES];
+		inicializarPosiciones();
+	}
+
+	private void inicializarPosiciones() {
+		for (int i = 0; i < posiciones.length; i++) {
+			posiciones[i] = Integer.MAX_VALUE;
+		}
+	}
+
+	public void procesar(int valor) {
+		System.out.println("Proceso el valor " + valor);
+		int pos = buscarPosicion(valor);
+		if (pos != CANT_POSICIONES) {
+			guardar(valor, pos);
+		}
+
+	}
+
+	private void guardar(int valor, int pos) {
+		if (posiciones[pos] != valor) {
+			desplazar(pos);
+		}
+		posiciones[pos] = valor;
+	}
+
+	private void desplazar(int pos) {
+		// va segundo o primero?
+		if (pos < 2) {
+			posiciones[2] = posiciones[1];
+			// va primero?
+			if (pos < 1) {
+				posiciones[1] = posiciones[0];
+			}
+		}
+
+	}
+
+	private int buscarPosicion(int valor) {
+		int pos = 0;
+		while (pos < posiciones.length && valor > posiciones[pos]) {
+			pos++;
+		}
+		return pos;
+	}
+
+	public void mostrar() {
+		System.out.println("Tiempos ganadores");
+		for (int i = 0; i < posiciones.length; i++) {
+			if (posiciones[i] != Integer.MAX_VALUE) {
+				System.out.println(posiciones[i]);
+			}
+		}
+
+	}
+
+}

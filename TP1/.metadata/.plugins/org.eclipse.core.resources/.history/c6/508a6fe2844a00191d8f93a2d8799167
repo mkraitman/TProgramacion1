@@ -1,0 +1,29 @@
+package ejercicios.ejercicio2;
+
+import ejercicios.ejercicio2.entidades.Atleta;
+import ejercicios.ejercicio2.entidades.MinimoMultiple;
+
+public class Ejercicio2 {
+
+	public static void main(String[] args) {
+		MinimoMultiple<Atleta> ganador = new MinimoMultiple<>();
+
+		ganador.procesar(9, new Atleta("HB"));
+		mostrar(ganador);
+		ganador.procesar(10, new Atleta("HC"));
+		mostrar(ganador);
+		ganador.procesar(9, new Atleta("BH"));
+		mostrar(ganador);
+		ganador.procesar(7, new Atleta("Speedy Gonzalez"));
+		mostrar(ganador);
+	}
+
+	private static void mostrar(MinimoMultiple<Atleta> ganadores) {
+		// mas adelante vamos a ver como
+		System.out.println(ganadores.getValor());
+		for (Atleta corredor : ganadores.getElementos()) {
+			System.out.println(corredor);
+		}
+	}
+
+}
